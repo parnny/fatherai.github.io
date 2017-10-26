@@ -235,7 +235,7 @@ a {
   margin: 3px;
 }
 #container .left-col {
-  width: 300px;
+  width: 200px;
   position: fixed;
   -webkit-transition: all 0.2s ease-in;
   -moz-transition: all 0.2s ease-in;
