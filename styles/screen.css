@@ -668,7 +668,7 @@ main {
   box-flex: 2;
   -webkit-flex: 2;
   -ms-flex: 2;
-  flex: 2;
+  flex: 3;
   hypens: auto;
   overflow-x: hidden;
   padding: 20px;
