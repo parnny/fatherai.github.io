@@ -259,7 +259,7 @@ a {
   z-index: 1;
 }
 #container .left-col .intrude-less {
-  width: 76%;
+  width: 100%;
   text-align: center;
   margin: 112px auto 0;
 }
