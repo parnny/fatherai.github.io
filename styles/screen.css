@@ -1364,7 +1364,7 @@ figure.highlight pre {
     box-flex: 2;
     -webkit-flex: 2;
     -ms-flex: 2;
-    flex: 2;
+    flex: 4;
     padding: 40px;
   }
   body main form .form-column input[type="name"],
