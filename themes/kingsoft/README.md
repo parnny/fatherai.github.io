@@ -1,244 +1,404 @@
-# Clean Blog Hexo
+## hexo-theme-skapp
+- [中文文档](./README-cn.md)
+### Project Introduction
 
-![](http://www.codeblocq.com/img/hexo-theme-thumbnail/CleanBlog.png)
+This project is a hexo theme named skapp. 
+[Demo](http://blog.minfive.com/)
 
-Hexo implementation of [Clean Blog](http://blackrockdigital.github.io/startbootstrap-clean-blog/index.html)
+#### theme effect
+![](http://oo12ugek5.bkt.clouddn.com/blog/images/17-09-17/hexo-theme-skapp-screenshot.png)
 
-Clean blog is a full featured, responsive Hexo theme. [Demo here](http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/).
+#### language support
+`skapp` supports `zh-cn` and `en` by default. If you need other languages, you can extend it by yourself(to put the language yml file into the `languages` folder under the `hexo-theme-skapp` directory).
 
-## Features
+### How to use
+1. Follow the [hexo official document](https://hexo.io/) to build the basic blog.
+>  the default path of the following operations is your hexo blog project directory, please enter the project.
 
-- Disqus and Facebook comments
-- Google Analytics
-- Addthis
-- Cover image for posts and pages
-- Tags and Categories Support
-- Responsive Images
-- Image Gallery
-- Code syntax highlighting
-
-## External libraries used
-
-- [Bootstrap](http://getbootstrap.com/css/)
-- [FeatherLight.js](http://noelboss.github.io/featherlight/) (Gallery)
-- [jQuery](https://jquery.com/)
-
-## Installation
-
-```
-$ git clone https://github.com/klugjo/hexo-theme-clean-blog.git themes/clean-blog
+2. use `git` to clone `hexo-theme-skapp` into the theme folder under your blog project directory.
+```shell
+cd theme
+git clone https://github.com/Mrminfive/hexo-theme-skapp.git
 ```
 
-Then update your blog's main `_config.yml` to set the theme to `clean-blog`:
-
+3. To modify the root `_config.yml` and install node dependencies.
+```shell
+npm install --save hexo-autoprefixer hexo-filter-cleanup hexo-generator-feed hexo-generator-sitemap hexo-renderer-sass hexo-renderer-swig mamboer/lunr.js moment node-sass object-assign
 ```
-# Extensions
-## Plugins: http://hexo.io/plugins/
-## Themes: http://hexo.io/themes/
-theme: clean-blog
+**note**: If your OS is Windows, you may meet some problems when install the `mamboer/lunr.js`(because of the package`nodejieba`). To fix this problem, you should install `node-gyp`.
+```shell
+npm install -g windows-build-tools
+npm install -g node-gyp
 ```
 
-## Configuration
+Then configure the root `_config.yml` file:
+```yml
+theme: hexo-theme-skapp
+# Sass
+node_sass:
+  outputStyle: nested
+  precision: 5
+  sourceComments: false
 
-### Menu
+# Autoprefixer
+autoprefixer:
+  exclude:
+    - '*.min.css'
+  browsers:
+    - 'last 2 versions'
 
-The menu is configured in the theme's `_config.yml`.
+# Lunr
+lunr:
+  field: all
+  fulltext: false
+  path: assets/lunr/
 
+# filter_cleanup
+hfc_useref:
+  enable: true
+  concat: true
+
+hfc_html:
+  enable: true
+  exclude:
+
+hfc_css:
+  enable: true
+  exclude: 
+    - '*.min.css'
+
+hfc_js:
+  enable: true
+  mangle: true
+  exclude: 
+    - '*.min.js'
+
+hfc_img:
+  enable: false
+  interlaced: false
+  multipass: false
+  optimizationLevel: 2
+  pngquant: false
+  progressive: false
+
+hfc_favicons:
+  enable: false
+  src: img/blog-logo.png
+  target: img/
+  icons:
+    android: true
+    appleIcon: true
+    appleStartup: false
+    coast: false
+    favicons: true
+    firefox: false
+    opengraph: false
+    windows: true
+    yandex: false
 ```
-# Header
+After finishing the configuration, you can preview your blog: `hexo s --debug`(If you meet the style problem, you can use the command `hexo clean` first).
+
+**note**: If you face the problem that lacking some js files(404 error), you should use `hexo s` instead of `hexo s --debug`
+### More Theme Configuration
+#### set support language
+To edit the root `_config.yml` file:
+```yml
+language: zh-cn
+```
+Now, skapp support two kinds of language:
+
+| language|  code  |
+| ------- | ----- |
+| English | en |
+| 简体中文 | zh-cn |
+
+#### configure the menu
+To edit the root `_config.yml` file and set the `menu` item：
+``` yml
 menu:
-  Home: /
-  Archives: /archives
-  Github:
-    url: https://github.com/klugjo/hexo-theme-clean-blog
-    icon: github
+  home: / 
+  archive: /archives
+  about: /about
 ```
 
-The object key is the label and the value is the path, or you can use a icon (font awesome) like menu item.
+Default menu items：
 
-### Top Left Label
+| key | value | dispaly text|
+| --- | ----- | ---------------- |
+| home | home: / | home |
+| archive | archive: /archives | archives |
+| about | about: /about | about |
+| search | search: /search | search | 
 
-The top left label is configured in the theme's `_config.yml`. When clicked it will lead to the Home Page.
-
+Then, you need create `about`,`search` and `404` page manually:
+create the about page:
+```shell
+hexo new page about
 ```
-# Title on top left of menu. Leave empty to use main blog title
-menu_title: Configurable Title
-```
+edit the `index.md` file in the root `source/about` folder:
 
-### Home Page cover image
+``` md
+---
+title: abbout
+date: 2017-07-29 00:50:51
+type: about
+layout: about
+---
 
-The Home Page cover is configured in the theme's `_config.yml`. It will be the same for all index type pages.
-
-```
-# URL of the Home page image
-index_cover: /img/home-bg.jpg
-```
-
-### Default post title
-
-The default post title (used when no title is specified) is configured in the theme's `_config.yml`.
-
-```
-# Default post title
-default_post_title: Untitled
+...(the below content will be redenered in the about page)
 ```
 
-### Comments
-
-The comments provider is specified in the theme's `_config.yml`. If you specify both a `disqus_shortname` and a `facebook.appid` there will be 2 sets of comment per post. So choose one.
-
+create the search page：
+``` shell
+hexo new page search
 ```
-# Comments. Choose one by filling up the information
-comments:
-  # Disqus comments
-  disqus_shortname: klugjotest
-  # Facebook comments
-  facebook:
-    appid: 123456789012345
-    comment_count: 5
-    comment_colorscheme: light
-```
-
-You can too hide the comment in the posts front-matter:
-
-```
-comment: false
+edit the `index.md` file in the root `source/search` folder:
+``` md
+---
+title: search
+date: 2017-07-29 00:50:51
+type: search
+layout: search
 ---
 ```
 
-### Google Analytics
-
-The Google Analytics Tracking ID is configured in the theme's `_config.yml`.
-
-```
-# Google Analytics Tracking ID
-google_analytics:
-```
-
-### Addthis
-
-The Addthis ID is configured in the theme's `_config.yml`.
-
-```
-# Addthis ID
-addthis:
-```
-
-### Social Account
-
-Setup the links to your social pages in the theme's `_config.yml`. Links are in the footer.
-
-```
-# Social Accounts
-twitter_url:
-facebook_url:
-github_url: https://github.com/klugjo/hexo-theme-clean-blog
-linkedin_url:
-mailto:
-```
-
-### Author
-
-The post's author is specified in the posts front-matter:
-
-```
-author: Klug Jo
+create the 404 page:
+create the `404.md` file in the source directory and edit this file:
+``` md
+---
+title: 404 Page Not Found
+date: 2017-08-04 23:36:59
+type: error
+layout: error
 ---
 ```
 
-### Post's Cover Image
+####  blog information configuration
 
-By default, posts will use the home page cover image. You can specify a custom cover in the front-matter:
+to edit the root `_config.yml` file：
+``` yml
+# Site
+# blog's title
+title: MINFIVE
 
-```
-title: Excerpts
-date: 2013-12-25 00:23:23
-tags: ["Excertps"]
-cover: /assets/contact-bg.jpg
----
-```
+# subtitle in the banner header
+subtitle: MINFIVE BLOG
 
-### Post's Share Cover Image
+# introduction  in the banner header
+subtitle_desc: 日常学习与兴趣交流
 
-You can specify a custom cover to share yours posts in social medias:
+# seo keyword
+keywords: minfive, minfive blog, 前端博客, 前端, 程序员, 前端开发, 全栈开发, node.js, javascript
 
-```
-share_cover: /assets/contact-bg.jpg
----
-```
+# blog description（for seo）
+description: 日常学习与兴趣交流的个人博客
 
-### Post's Excerpt
+# self introduction
+introduction: 不思量，自难忘！
 
-This theme does not support traditional excerpts. To show excerpts on the index page, use `subtitle` in the front-matter:
+# your blog favicon icon, support two ways: local and online. the local way need you to put the icon under  themes/hexo-theme-skapp/source/img directory
+favicon_ico: http://oo12ugek5.bkt.clouddn.com/blog/images/favicon.ico
 
-```
-title: Excerpts
-date: 2013-12-25 00:23:23
-tags: ["Excertps"]
-subtitle: Standard Excerpts are not supported in Clean Blog but you can use subtitles in the front matter to display text in the index.
----
+# blog logo icon in the upper left corner. support the local way and online way. 
+logo: http://oo12ugek5.bkt.clouddn.com/images/logo-text-white.png
 
-```
+# avatar
+avatar: http://oo12ugek5.bkt.clouddn.com/images/qrcode.png
+# qrcode: http://oo12ugek5.bkt.clouddn.com/images/qrcode.png
 
-## Tags page.
+# page default cover
+default_cover: http://oo12ugek5.bkt.clouddn.com/images/default_cover.png
 
-> Follow these steps to add a `tags` page that contains all the tags in your site.
+# header background picture
+header_cover: http://oo12ugek5.bkt.clouddn.com/blog/images/banner-bg.jpg
 
-- Create a page named `tags`
+# 404 page background picture
+error_page_bg: http://oo12ugek5.bkt.clouddn.com/blog/images/dogs.jpg
 
-```
-$ hexo new page "tags"
-```
+# page loading icon
+loader_img: http://oo12ugek5.bkt.clouddn.com/blog/images/loader.gif
 
-- Edit the newly created page and set page type to `tags` in the front matter.
+# author information
+author:
+  name: minfive
+  link: https://github.com/Mrminfive
 
-```
-title: All tags
-type: "tags"
-```
-
-- Add `tags` to the menu in the theme `_config.yml`:
-
-```
-# Header
-menu:
-  Home: /
-  Archives: /archives
-  Tags: /tags
-```
-
-## Categories page.
-
-> Follow these steps to add a `categories` page that contains all the categories in your site.
-
-- Create a page named `categories`
-
-```
-$ hexo new page "categories"
-```
-
-- Edit the newly created page and set page type to `categories` in the front matter.
-
-```
-title: All tags
-type: "categories"
-```
-
-- Add `Categories` to the menu in the theme `_config.yml`:
-
-```
-# Header
-menu:
-  Home: /
-  Archives: /archives
-  Categories: /categories
+# footer information
+about:
+  info: 本站是基于 Hexo 搭建的静态资源博客，主要用于分享日常学习、生活及工作的一些心得总结，欢迎点击右下角订阅 rss。
+  address: Guangzhou, Guangdong Province, China
+  email: chenxiaowu1994@outlook.com
 ```
 
 
-## Creator
+#### contact information configuration
+create `contact.yml` under the `/source/_data` (This configuration will create links in the page footer):
 
-This theme was created by [Blackrock Digital](https://github.com/BlackrockDigital) and adapted for Hexo by [Jonathan Klughertz](http://www.codeblocq.com/).
+![contact-img](http://oo12ugek5.bkt.clouddn.com/blog/images/17-09-17/hexo-theme-skapp-contact.png)
 
-## License
+``` yml
+- title: github
+  icon: icon-github
+  link: https://github.com/Mrminfive
+- title: email
+  icon: icon-email
+  link: mailto:chenxiaowu1994@outlook.com
+- title: rss
+  icon: icon-rss
+  link: /atom.xml
+```
+`icon` only support these values：
+* `icon-email`: email
+* `icon-rss`: rss
+* `icon-in`: linkedin
+* `icon-twitter`: twitter
+* `icon-facebook`: facebook
+* `icon-github`: github
+* `icon-zhihu`: zhihu
+* `icon-douban`: douban
+* `icon-weibo`: weibo
+* `icon-telegram`: telegram
 
-MIT
+#### external link configuration
+create `footer_link.yml` under the `source/_data` directory(This configuration will create links in the page footer):
+![footer-link](http://oo12ugek5.bkt.clouddn.com/blog/images/17-09-17/hexo-theme-skapp-footer.png)
+
+``` yml
+friend_links:
+  - name: hexo-theme-skapp
+    desc: hexo-theme-skapp
+    link: https://github.com/Mrminfive/hexo-theme-skapp
+
+build_tools:
+  - name: Hexo
+    desc: Blog Framework
+    link: https://hexo.io/
+```
+`name` means the link value, `desc` means the link `title` attribute value.
+Each array in this file represents a list of link(e.g. friend_links). Skapp support multi-column links(you just need to edit your language configuration in the `hexo-theme-skapp/languages`).
+
+#### personalized configuration
+skapp uses `sass` precompiled style and packages all the baisc styles in the `_theme.scss` file under the `hexo-theme-skapp/source/scss` directory:
+``` scss
+/**
+ * blog theme 
+ */
+
+$main-color: #19abd6                                !default;
+$main-color--hover: lighten($main-color, 10%)       !default;
+
+$font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,"PingFang SC","Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Microsoft Sans Serif","WenQuanYi Micro Hei",sans           !default;
+
+$main-fc: #666                                      !default;
+$main-fs: 14px                                      !default;
+$main-lh: 1.7                                       !default;
+
+$title-fc: #242f35                                  !default;
+
+$hint-fc: #19abd6                                   !default;
+
+$bgc--main: #fff                                    !default;
+$bgc--bottom: #2d383e                               !default;
+$bgc--footer: #242f35                               !default;
+
+$border-c: #d8e5f3                                  !default;
+
+$transition: .3s                                    !default;
+
+$mq-desktop--wide: 1280px                           !default;
+$mq-desktop: 980px                                  !default;
+$mq-mobile: 736px                                   !default;
+
+$pad: 15px                                          !default;
+
+$z-index--bottom: 1                                 !default;
+$z-index--center: 50                                !default;
+$z-index--top: 100                                  !default;
+```
+
+#### blog basic usage
+To configure basic info  in your markdown blog file：
+```
+title: Hello World 
+cover: http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg
+author: 
+  nick: BruceYJ
+  link: https://www.github.com/BruceYuj
+
+# If the article is reproduced, you need to increase the article source
+editor:
+  name: Minfive
+  link: https://www.github.com/Mrminfive
+
+# post subtitle in your index page
+subtitle: post introduction
+```
+`title` attribute is the blog's title. `cover` attribute is the blog's first picture and thumbnail. `author` attribute is the blog's author information and link.
+
+#### third-part service
+
+##### statistics
+###### baidu statistics
+skapp has integrated baidu statistics. You need to get the id and edit the root `_config.yml` file:
+``` yml
+# Baidu statistic
+baidu_statistic: e3267498201dfa9699a5c509424709d6
+```
+
+###### google statistics
+skapp has integrated google statistics. You need to get the id and edit the root `_config.yml` file:
+``` yml
+# Google statistic
+google_statistic: UA-108468870-1
+```
+###### busuanzi statistics
+skapp uses busuanzi to count page PV and closed by default. You can open this service by editing the `_config.yml` file:
+
+``` yml
+# Busuanzi
+busuanzi: true
+```
+
+##### global search
+skapp uses `lunr` to search in site and don't support configuration.
+
+##### rss
+to edit the root `_config.yml` file:
+``` yml
+# Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
+# Sitemap
+sitemap:
+  path: sitemap.xml
+```
+
+##### Comment system
+###### gitalk 
+skapp has integrated [gitalk](https://github.com/gitalk/gitalk).
+If you want to use this comment function, you need to register the Github Application(follow the [gitalk document](https://github.com/gitalk/gitalk#usage)).
+Then to edit the `_config.yml` configuration:
+``` yml
+# Gitalk
+gitTalk:
+  clientId: ***
+  clientSecret: ***
+  repo: ***
+  owner: ***
+  admin: 
+    - ***
+```
+
+###### disqus
+
+skapp has integrated[disqus](https://disqus.com/). If you want to use this comment function, you need to register Disqus(follow the official instruction).
+Then to edit the `_config.yml` configuration:
+
+``` yml
+# Disqus
+
+disqus_shortname: ***
+```

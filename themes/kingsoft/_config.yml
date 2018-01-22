@@ -1,47 +1,42 @@
-# Header
+
+# Site
+title: Kingsoft AI
+subtitle: Kingsoft AI Blog
+subtitle_desc: A blog for shared knowlege in AI
+keywords: kingsoft, AI, deeplearning, rl, dnn
+description: Dedicated to sharing the latest achievements and experience in artificial intelligence
+introduction: 不思量，自难忘！
+favicon_ico: http://oo12ugek5.bkt.clouddn.com/blog/images/favicon.ico
+
+logo: /img/kingsoft_logo.png
+
+qrcode: http://oo12ugek5.bkt.clouddn.com/images/qrcode.png
+default_cover: https://www.seoclerk.com/pics/550925-1fY25w1502215384.jpg #http://oo12ugek5.bkt.clouddn.com/images/default_cover.png
+
+header_cover: /img/ai_banner.jpg #http://oo12ugek5.bkt.clouddn.com/blog/images/banner.jpeg
+error_page_bg: http://oo12ugek5.bkt.clouddn.com/blog/images/dogs.jpg
+
+author:
+  name: Yi Gu
+  link: https://github.com/tornadoyi
+
+about:
+  info: Dedicated to sharing the latest achievements and experience in artificial intelligence
+  address: Shang Di, Beijing Province, China
+  email: guyi@kingsoft.com
+
+# Menu
 menu:
-  Home: /
-  Archives: /archives
-  Tags: /tags
-  Categories: /categories
-  Github:
-    url: https://github.com/kingsoft-ai
-    icon: github
+  home: / 
+  archive: /archives
+  #works: /demo
+  #music: /music
+  about: /about
+  github:
+    name: Github
+    link: https://github.com/kingsoft-ai
+    icon: icon-github
 
-# Title on top left of menu. Leave empty to use main blog title
-menu_title: Kingsoft AI Lab
+highlight_theme: normal
 
-# URL of the Home page image
-#index_cover: http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg
-index_cover: /img/forward.jpg
-
-# Default post title
-default_post_title: Kingsoft AI
-
-# Comments. Choose one by filling up the information
-comments:
-  # Disqus comments
-  disqus_shortname:
-  # Facebook comments
-  facebook:
-    appid:
-    comment_count: 5
-    comment_colorscheme: light
-
-# Google Analytics Tracking ID
-google_analytics:
-
-# Addthis ID
-addthis:
-
-# set your own favicon
-favicon:
-
-# Social Accounts
-twitter_url:
-twitter_handle:
-facebook_url:
-github_url: https://github.com/kingsoft-ai
-gitlab_url:
-linkedin_url:
-mailto:
+loader_img: http://oo12ugek5.bkt.clouddn.com/blog/images/loader.gif
