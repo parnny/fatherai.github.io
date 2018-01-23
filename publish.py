@@ -2,6 +2,7 @@ import os
 import argparse
 import zipfile
 import shutil
+from git import Repo
 
 
 def find_all_articles(hexo_path):
@@ -16,14 +17,24 @@ def find_all_articles(hexo_path):
 
 
 
-def git_commit_and_push(git_path):
-    os.system('cd {}'.format(git_path))
-    os.system('git add ./')
-    os.system('git add ./')
+def git_commit_and_push(git_path, log):
+    repo = Repo(git_path)
+    index = repo.index
+    remote = repo.remote()
+
+    # add untracked_files
+    index.add(repo.untracked_files)
+
+    # commit
+    repo.git.commit('-a', '-m', log)
+
+    # push
+    remote.push()
 
 
 
-def publish(hexo_path, article_zip_path):
+
+def publish(hexo_path, article_zip_path, log):
     article_path = os.path.join(hexo_path, 'source', '_posts')
 
     # extract files
@@ -72,8 +83,14 @@ def publish(hexo_path, article_zip_path):
         shutil.copytree(asset_path, os.path.join(article_path, name), True)
 
 
+    # commit
+    git_commit_and_push(hexo_path, log)
 
 
+
+
+def remove(hexo_path, article, log):
+    pass
 
 
 
@@ -84,7 +101,14 @@ if __name__ == '__main__':
     parser.add_argument('command', choices=['publish', 'remove'], help='please choose action')
     parser.add_argument('--hexo', type=str, required=True, help='hexo project path')
     parser.add_argument('--article', type=str, required=True, help='new article file path for publish or a name for remove')
+    parser.add_argument('--log', type=str, default='automatic commit by publish', help='a log for commit')
     args = parser.parse_args()
 
-    csv_paths = [os.path.realpath(p) for p in args.csv]
-    output_path = os.path.realpath(args.output_path)
+    if args.command == 'publish':
+        publish(args.hexo, args.article, args.log)
+
+    elif args.command == 'remove':
+        remove(args.hexo, args.article, args.log)
+
+    else:
+        raise Exception('invalid command {}'.format(args.command))
