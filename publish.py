@@ -69,8 +69,8 @@ def publish(hexo_path, article_zip_path, log):
     for name in names:
         old_asset_path = os.path.join(article_path, name)
         old_article_path = old_asset_path + '.md'
-        shutil.rmtree(old_asset_path)
-        shutil.rmtree(old_article_path)
+        if os.path.isdir(old_asset_path): shutil.rmtree(old_asset_path)
+        if os.path.isfile(old_asset_path): os.remove(old_article_path)
 
 
     # copy new articles
@@ -80,7 +80,7 @@ def publish(hexo_path, article_zip_path, log):
         asset_path = asset_paths[i]
 
         shutil.copy(md_path, os.path.join(article_path, os.path.basename(md_path)))
-        shutil.copytree(asset_path, os.path.join(article_path, name), True)
+        if asset_path is not None: shutil.copytree(asset_path, os.path.join(article_path, name), True)
 
 
     # commit
