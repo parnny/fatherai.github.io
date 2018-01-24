@@ -104,7 +104,7 @@ def publish(hexo_path, article_zip_path, log):
 
 
     # deploy
-    deploy()
+    deploy(hexo_path)
 
 
 
