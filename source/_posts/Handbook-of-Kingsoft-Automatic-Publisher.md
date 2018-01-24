@@ -9,7 +9,7 @@ author:
 	nick: Yi Gu
 	link: guyi@kingsoft.com
 ---
-
+ 
 ## How to Publish Your Article  
 It was so essential and promising to publish your carefully written articles to a beautiful designed website. There are only **two** simple steps that can be uploaded to your articles before you respond.
 
