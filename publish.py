@@ -90,6 +90,9 @@ def publish(hexo_path, article_zip_path, log):
         if asset_path is not None: shutil.copytree(asset_path, os.path.join(article_path, name), True)
 
 
+    # clean extract files
+    shutil.rmtree(extract_path)
+
     # commit
     git_commit_and_push(hexo_path, log)
 
