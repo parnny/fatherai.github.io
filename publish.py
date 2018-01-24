@@ -36,6 +36,12 @@ def git_commit_and_push(git_path, log):
 
 
 
+def deploy(hexo_path):
+    cur_path = os.path.realpath('')
+    os.system('cd {}'.format(hexo_path))
+    os.system('hexo deploy')
+    os.system('cd {}'.format(cur_path))
+
 
 def publish(hexo_path, article_zip_path, log):
     # check
@@ -97,6 +103,9 @@ def publish(hexo_path, article_zip_path, log):
     git_commit_and_push(hexo_path, log)
 
 
+    # deploy
+    deploy()
+
 
 
 def remove(hexo_path, article_name, log, separator):
@@ -122,6 +131,9 @@ def remove(hexo_path, article_name, log, separator):
 
     # commit
     git_commit_and_push(hexo_path, log)
+
+    # publush
+    os.system()
 
 
 
