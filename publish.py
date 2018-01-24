@@ -89,8 +89,29 @@ def publish(hexo_path, article_zip_path, log):
 
 
 
-def remove(hexo_path, article, log):
-    pass
+def remove(hexo_path, article_name, log, separator):
+    article_path = os.path.join(hexo_path, 'source', '_posts')
+
+    # split article names
+    article_names = article_name.split(separator)
+
+    # trim article names
+    for i in range(len(article_names)):
+        name = article_names[i]
+        name = os.path.splitext(name)[0]
+        article_names[i] = name.rstrip().lstrip()
+
+
+    # remove all article
+    for name in article_names:
+        asset_path = os.path.join(article_path, name)
+        md_path = asset_path + '.md'
+        if os.path.isdir(asset_path): shutil.rmtree(asset_path)
+        if os.path.isfile(md_path): os.remove(md_path)
+
+
+    # commit
+    git_commit_and_push(hexo_path, log)
 
 
 
@@ -102,13 +123,14 @@ if __name__ == '__main__':
     parser.add_argument('--hexo', type=str, required=True, help='hexo project path')
     parser.add_argument('--article', type=str, required=True, help='new article file path for publish or a name for remove')
     parser.add_argument('--log', type=str, default='automatic commit by publish', help='a log for commit')
+    parser.add_argument('--separator', type=str, default='|', help='a separator for process array string')
     args = parser.parse_args()
 
     if args.command == 'publish':
         publish(args.hexo, args.article, args.log)
 
     elif args.command == 'remove':
-        remove(args.hexo, args.article, args.log)
+        remove(args.hexo, args.article, args.log, args.separator)
 
     else:
         raise Exception('invalid command {}'.format(args.command))
