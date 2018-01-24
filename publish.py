@@ -132,8 +132,6 @@ def remove(hexo_path, article_name, log, separator):
     # commit
     git_commit_and_push(hexo_path, log)
 
-    # publush
-    os.system()
 
 
 
