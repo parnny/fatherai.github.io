@@ -80,4 +80,5 @@ A example of header configuration and display is shown as below:
 1. Define array constructor with [yaml](http://yaml.org) format for categories keyword could help to implement multilevel categories.
 2. Compressing multiple files together helps to achieve batch publishing.
 3. Republishing an article whose name is the same as that of the previous article means that an **update** operation is executed.
+4. Use "|" to separate file name filled in article name text box could help to operate batch remove.
 
