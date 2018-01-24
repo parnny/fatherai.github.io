@@ -26,7 +26,10 @@ def git_commit_and_push(git_path, log):
     index.add(repo.untracked_files)
 
     # commit
-    repo.git.commit('-a', '-m', '\"{}\"'.format(log))
+    try:
+        repo.git.commit('-a', '-m', '\"{}\"'.format(log))
+    except Exception as e:
+        print(e)
 
     # push
     remote.push()
