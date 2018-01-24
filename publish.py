@@ -39,7 +39,7 @@ def git_commit_and_push(git_path, log):
 def deploy(hexo_path):
     cur_path = os.path.realpath('')
     os.system('cd {}'.format(hexo_path))
-    os.system('hexo deploy')
+    os.system('hexo d')
     os.system('cd {}'.format(cur_path))
 
 
