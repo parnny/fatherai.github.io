@@ -102,7 +102,6 @@ def publish(hexo_path, article_zip_path, log):
     # commit
     git_commit_and_push(hexo_path, log)
 
-
     # deploy
     deploy(hexo_path)
 
@@ -128,9 +127,11 @@ def remove(hexo_path, article_name, log, separator):
         if os.path.isdir(asset_path): shutil.rmtree(asset_path)
         if os.path.isfile(md_path): os.remove(md_path)
 
-
     # commit
     git_commit_and_push(hexo_path, log)
+
+    # deploy
+    deploy(hexo_path)
 
 
 
