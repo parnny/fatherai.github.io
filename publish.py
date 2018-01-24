@@ -35,6 +35,10 @@ def git_commit_and_push(git_path, log):
 
 
 def publish(hexo_path, article_zip_path, log):
+    # check
+    if not os.path.isfile(article_zip_path):
+        raise Exception('Can not found zip file {}'.format(article_zip_path))
+
     article_path = os.path.join(hexo_path, 'source', '_posts')
 
     # extract files
