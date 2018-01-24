@@ -2,3 +2,4 @@
 db.json
 public
 .DS_Store
+node_modules
