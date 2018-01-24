@@ -1,6 +1,6 @@
 ﻿---
 title: Handbook of Kingsoft Automatic Publisher
-subtitle: Version: v0.1
+subtitle: "Version: v0.1"
 date: 2018-01-22 14:03:17
 categories: others
 tags: others
