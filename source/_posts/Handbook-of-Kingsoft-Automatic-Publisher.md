@@ -54,10 +54,30 @@ The header of the article will determine how the article will be displayed. Ther
 - title: The title of article always show in everywhere.
 - subtitle: The subtitle is going to show below the title as abstract.
 - date: The contents of latest post side bar will be showed base on date.
-- categories: As classification of article, categories is used to fast search.
+- categories: As classification of article, categories is used to fast search. See the trick of multilevel categories for child level classification.
 - tags: Only used to fast search.
 - cover: Cover is a banner of article.
 - author:  author contains 2 properties, one is nick which should be filled by author name, another is link which describe the email of author.
 
+A example of header configuration and display is shown as below:
+> \---
+> title: Handbook of Kingsoft Automatic Publisher
+> subtitle: "Version: v0.1"
+> date: 2018-01-22 14:03:17
+> categories: others
+> tags: others
+> cover: 	icon-handbook.jpeg
+> author:
+> 	nick: Yi Gu
+> 	link: guyi@kingsoft.com
+> \---
+
+![example](example.png)
+
+
 
 ## Attension and Tricks
+1. Define array constructor with [yaml](http://yaml.org) format for categories keyword could help to implement multilevel categories.
+2. Compressing multiple files together helps to achieve batch publishing.
+3. Republishing an article whose name is the same as that of the previous article means that an **update** operation is executed.
+
