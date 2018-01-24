@@ -130,10 +130,10 @@ if __name__ == '__main__':
     parser.add_argument('--separator', type=str, default='|', help='a separator for process array string')
     args = parser.parse_args()
 
-    if args.command == 'publish':
+    if args.command.lower() == 'publish':
         publish(args.hexo, args.article, args.log)
 
-    elif args.command == 'remove':
+    elif args.command.lower() == 'remove':
         remove(args.hexo, args.article, args.log, args.separator)
 
     else:
