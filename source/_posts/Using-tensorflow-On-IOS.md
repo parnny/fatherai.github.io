@@ -5,9 +5,8 @@ subtitle: "Version: v0.1"
 date: 2018-01-26 15:43:36
 categories: others
 tags: tensorflow-for-ios
-cover: icon-handbook.jpeg
 author:
-nick: Bean bai
+nick: tongyao Bai
 link: https://C-ID.github.io
 ---
 
