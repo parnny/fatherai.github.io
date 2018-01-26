@@ -7,7 +7,7 @@ tags: others
 cover: 	icon-handbook.jpeg
 author:
 	nick: Yi Gu
-	link: guyi@kingsoft.com
+	link: https://tornadoyi.github.io
 ---
  
 ## How to Publish Your Article  
@@ -59,7 +59,7 @@ The header of the article will determine how the article will be displayed. Ther
 - cover: Cover is a banner of article.
 - author:  author contains 2 properties, one is nick which should be filled by author name, another is link which describe the email of author.
 
-A example of header configuration and display is shown as below:
+An example of header configuration and display is shown as below:
 > \---
 > title: Handbook of Kingsoft Automatic Publisher
 > subtitle: "Version: v0.1"
@@ -81,4 +81,4 @@ A example of header configuration and display is shown as below:
 2. Compressing multiple files together helps to achieve batch publishing.
 3. Republishing an article whose name is the same as that of the previous article means that an **update** operation is executed.
 4. Use "|" to separate file name filled in article name text box could help to operate batch remove.
-
+5. Please visit the [publishing website](http://192.168.145.36:8080/job/Article-Publisher/build?) in the internal network of kingsoft.
