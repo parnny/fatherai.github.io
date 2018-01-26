@@ -4,12 +4,12 @@ title: Using TensorFlow On IOS
 subtitle: "Version: v0.1"
 date: 2018-01-26 15:43:36
 categories:
-  -deeplearning
-  -tensorflow
+  - deeplearning
+  - tensorflow
 tags:
-  -tensorflow
-  -deeplearning
-  -ios
+  - tensorflow
+  - deeplearning
+  - ios
 author:
   nick: Tongyao Bai
   link: https://github.com/C-ID
