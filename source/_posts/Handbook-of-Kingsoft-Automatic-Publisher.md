@@ -69,7 +69,7 @@ An example of header configuration and display is shown as below:
 > cover: 	icon-handbook.jpeg
 > author:
 > 	nick: Yi Gu
-> 	link: guyi@kingsoft.com
+> 	link: https://tornadoyi.github.io
 > \---
 
 ![example](example.png)
