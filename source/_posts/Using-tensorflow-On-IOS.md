@@ -6,7 +6,7 @@ date: 2018-01-26 15:43:36
 categories: others
 tags: tensorflow-for-ios
 author:
-nick: tongyao Bai
+nick: Bai
 link: https://github.com/C-ID
 ---
 
