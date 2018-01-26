@@ -7,7 +7,7 @@ categories: others
 tags: tensorflow-for-ios
 author:
 nick: tongyao Bai
-link: https://C-ID.github.io
+link: https://github.com/C-ID
 ---
 
 ## Using TensorFlow On IOS
