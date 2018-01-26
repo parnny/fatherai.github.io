@@ -1,7 +1,7 @@
 
 ---
 title: Using TensorFlow On IOS
-subtitle: “Version: v0.1”
+subtitle: "Version: v0.1"
 date: 2018-01-26 15:43:36
 categories: others
 tags: tensorflow-for-ios
