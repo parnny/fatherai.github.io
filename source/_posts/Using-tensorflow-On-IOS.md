@@ -43,7 +43,8 @@ From our directory of TensorFlow 1.3 sources, we can simply run:
 ```bash
   $ git branch -a
 ```
-  if your tensorflow version is not 1.3,then run the following command to checkout:
+
+ Ckeckout your tensorflow version, simply run the command as follow, for example:
 ```bash
   $ git checkout r1.3
 ```
@@ -93,4 +94,4 @@ Next, we add the following to Header Search Paths.
 **YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/downloads/protobuf/src**
 **YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/downloads/eigen**
 
-Now that the xcode project is set up, we'll load up our model and perform inference on the test datesets.
+Now that the xcode project is set up, you can load up our model and perform inference on the test datesets.
