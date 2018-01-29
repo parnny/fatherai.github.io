@@ -4,11 +4,11 @@ title: Using TensorFlow On IOS
 subtitle: How to use tensorflow on ios
 date: 2018-01-26 15:43:36
 categories:
-  - deep learning
+  - machine learning
   - tensorflow
 tags:
   - tensorflow
-  - deep learning
+  - machine learning
   - ios
 author:
   nick: Tongyao Bai
