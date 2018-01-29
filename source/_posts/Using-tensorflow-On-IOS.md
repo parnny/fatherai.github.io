@@ -93,4 +93,4 @@ Next, we add the following to Header Search Paths.
 **YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/downloads/protobuf/src**
 **YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/downloads/eigen**
 
-Now that the xcode project is set up, you can load up our model and perform inference on the test datesets.
+Now that the xcode project is set up, you can load up your model and perform inference on the test datesets.
