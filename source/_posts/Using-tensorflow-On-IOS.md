@@ -79,16 +79,15 @@ $ cp YOUR_TENSORFLOW_SOURCE_DIR/tensorflow/tensorflow/contrib/makefile/gen/proto
 After that,we should add the tensorflow static library to xcode project.Open your xcode project you have created,right-click the project name,select >"Add Files to YOUR_PROJECT_NAME",you will see libtensorflow-core.a,libprobuf-lite.a,libprotobuf.a in your pages,then add them. You can checkout whether or not you have add the static library sucessfully by selecting xcode menu:'Building Phases -> Link Binary with Libraries'. Finally, add the **Accelerate.framework** library to ensure your tensorflow-program running fine.
 
 
-Then add select xcode "Building Setting" menu,add **$(PROJECT_DIR)/YOUR_PROJECT_NAME** to Library Search Paths.Here replace *YOUR_PROJECT_NAME* to your project name. We'll also add the following flags to Other Linker Flags:
+Then add select xcode "Building Setting" menu,add **$(PROJECT_DIR)/YOUR_PROJECT_NAME** to Library Search Paths.Here replace *YOUR_PROJECT_NAME* to your project name. By the way, **-force_load** was used to decorate tensorflow. then,
+we'll also add the following flags to Other Linker Flags:
 
 **-force_load**
 **$(PROJECT_DIR)/YOUR_PROJECT_NAME/libtensorflow-core.a**
-**$(PROJECT_DIR)/YOUR_PROJECT_NAME/libprotobuf-lite.a**
-**$(PROJECT_DIR)/YOUR_PROJECT_NAME/libprotobuf.a**
 
 Next, we add the following to Header Search Paths.
 
-**YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow**
+**YOUR_TENSORFLOW_SOURCE_FOLDER**
 **YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/gen/proto**
 **YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/downloads**
 **YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/downloads/protobuf/src**
