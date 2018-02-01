@@ -19,7 +19,7 @@ author:
 
 Welcome to KingSoft AILab! In this article,we'll walk through getting TensorFlow, Google's machine learning library, set up to perform inference directly on an iOS device.
 
-#### Installing TensorFlow 1.3 on IOS
+#### Installing TensorFlow on IOS
 
 The binary distribution of TensorFlow for macOS does not include the IOS static library or some of the scripts we'll need, so we'll have to build both ourselves in a later section. Since it helps if the version of the iOS library is the same as the version of TensorFlow installed on our system, we'll re-install the latest version of TensorFlow from source (even if it's already installed). This can save us some headaches down the road.
 
@@ -57,8 +57,18 @@ $ tensorflow/contrib/makefile/download_dependencies.sh
 For more information you can click here [Readme](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/makefile)
 
 
-To get the libraries compiled,you must install xcode(version >7.3),you can install xcode from App Store.
-Then,you can run this from the root of your TensorFlow source folder:
+To get the libraries compiled, you must install xcode(version >7.3), you can install xcode from App Store.
+
+Now, if you are buiding tensorflow r1.3 or lower, you can skip the following step. Otherwise, if you are compiling tensorflow r1.4 or r1.5, you should modify the tf_op_files.txt file in your **tensorflow/contrib/makefile** directory by adding 
+
+```bash
+tensorflow/core/ops/bitwise_ops.cc
+tensorflow/core/ops/audio_ops.cc
+tensorflow/core/ops/lookup_ops.cc
+```
+to the file.
+
+Then, you can run this from the root of your TensorFlow source folder:
 
 ```bash
 $ tensorflow/contrib/makefile/build_all_ios.sh
