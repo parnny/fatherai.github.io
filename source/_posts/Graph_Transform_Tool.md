@@ -30,9 +30,10 @@ After browsing both of these transform reference, we selected some important par
 
 bachmark are as follow:
 
-
-|frozen|add_default_attributes|fold_batch_norms|fold_constants|fold_old_batch_norms|quantize_weights|sort_by_execution_order|strip_unused_nodes|remove_nodes|tensorflow-r1.4(fps)|tensorflow-r1.5(fps)|
-|:----:|:--------------------:|:--------------:|:------------:|:------------------:|:--------------:|:---------------------:|:----------------:|:----------:|:------------------:|:------------------:|
-|  Yes |                      |                |              |                    |                |                       |                  |            |          9         |         9          |
-|  Yes |          Yes         |      Yes       |      Yes     |         Yes        |                |                       |       Yes        |     Yes    |          11        |         10~11      |
-|  Yes |          Yes         |      Yes       |      Yes     |         Yes        |       Yes      |                       |       Yes        |            |          11        |         10~11      |
+```bash
+|frozen|add_default_attributes|fold_batch_norms|fold_constants|fold_old_batch_norms|quantize_weights|strip_unused_nodes|remove_nodes|tensorflow-r1.4(fps)|tensorflow-r1.5(fps)|
+|:----:|:--------------------:|:--------------:|:------------:|:------------------:|:--------------:|:----------------:|:----------:|:------------------:|:------------------:|
+|  Yes |                      |                |              |                    |                |                  |            |          9         |         9          |
+|  Yes |          Yes         |      Yes       |      Yes     |         Yes        |                |       Yes        |     Yes    |          11        |         10~11      |
+|  Yes |          Yes         |      Yes       |      Yes     |         Yes        |       Yes      |       Yes        |            |          11        |         10~11      |
+```
