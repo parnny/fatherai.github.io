@@ -17,7 +17,7 @@ author:
 
 ## Using TensorFlow On IOS
 
-Welcome to KingSoft AILab! In this article,we'll walk through getting TensorFlow, Google's machine learning library, set up to perform inference directly on an iOS device.
+Welcome to KingSoft AILab! In this article, we'll walk through getting TensorFlow, Google's machine learning library, set up to perform inference directly on an iOS device.
 
 #### Installing TensorFlow on IOS
 
@@ -59,7 +59,7 @@ For more information you can click here [Readme](https://github.com/tensorflow/t
 
 To get the libraries compiled, you must install xcode(version >7.3), you can install xcode from App Store.
 
-Now, if you are buiding tensorflow r1.3 or lower, you can skip the following step. Otherwise, if you are compiling tensorflow r1.4 or r1.5, you should modify the tf_op_files.txt file in your **tensorflow/contrib/makefile** directory by adding 
+Now, if you are buiding tensorflow r1.3 or lower, you can skip the following step. Otherwise, if you are compiling tensorflow r1.4 or r1.5, you should modify the **tf_op_files.txt** file in your **tensorflow/contrib/makefile** directory by adding 
 
 ```bash
 tensorflow/core/ops/bitwise_ops.cc
@@ -78,7 +78,7 @@ Running build_all_ios.sh will generate a TensorFlow static library in the tensor
 
 #### Setting up xcode project
 
-Create a new xcode test project,then,we have to tell the iOS target about the TensorFlow static library we built for IOS (and the protocol buffer library is relies on). To do this, copy the following static library to your xcode test project .We can run the command to copy:
+Create a new xcode test project. then, we have to tell the iOS target about the TensorFlow static library we built for IOS (and the protocol buffer library is relies on). To do this, copy the following static library to your xcode test project. We can run the command to copy:
 
 ```bash
 $ cp YOUR_TENSORFLOW_SOURCE_DIR/tensorflow/tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a YOUR_XCODE_PROJECT_DIR/
@@ -86,10 +86,10 @@ $ cp YOUR_TENSORFLOW_SOURCE_DIR/tensorflow/tensorflow/contrib/makefile/gen/proto
 $ cp YOUR_TENSORFLOW_SOURCE_DIR/tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf.a YOUR_XCODE_PROJECT_DIR/
 ```
 
-After that,we should add the tensorflow static library to xcode project.Open your xcode project you have created,right-click the project name,select >"Add Files to YOUR_PROJECT_NAME",you will see libtensorflow-core.a,libprobuf-lite.a,libprotobuf.a in your pages,then add them. You can checkout whether or not you have add the static library sucessfully by selecting xcode menu:'Building Phases -> Link Binary with Libraries'. Finally, add the **Accelerate.framework** library to ensure your tensorflow-program running fine.
+After that, we should add the tensorflow static library to xcode project. Open your xcode project you have created, right-click the project name, select >"Add Files to YOUR_PROJECT_NAME", you will see **libtensorflow-core.a**, **libprobuf-lite.a**, **libprotobuf.a** in your pages, then add them. You can checkout whether or not you have add the static library sucessfully by selecting xcode menu: 'Building Phases -> Link Binary with Libraries'. Finally, add the **Accelerate.framework** library to ensure your tensorflow-program running fine.
 
 
-Then add select xcode "Building Setting" menu,add **$(PROJECT_DIR)/YOUR_PROJECT_NAME** to Library Search Paths.Here replace *YOUR_PROJECT_NAME* to your project name. By the way, **-force_load** was used to decorate tensorflow. then,
+Then add select xcode "Building Setting" menu, add **$(PROJECT_DIR)/YOUR_PROJECT_NAME** to Library Search Paths. Here replace *YOUR_PROJECT_NAME* to your project name. By the way, **-force_load** was used to decorate tensorflow. then,
 we'll also add the following flags to Other Linker Flags:
 
 **-force_load**
