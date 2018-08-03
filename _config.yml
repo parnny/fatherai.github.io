@@ -78,7 +78,7 @@ theme: fatherai
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/fatherai/fatherai.github.io.git
+  repo: git@github.com:fatherai/fatherai.github.io.git
   branch: master
 
 
