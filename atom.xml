@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/fatherai/"/>
-  <updated>2018-08-03T14:23:07.000Z</updated>
+  <updated>2018-08-03T14:36:09.000Z</updated>
   <id>https://github.com/fatherai/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://github.com/fatherai/2018/08/03/Fatherai-Service-Introduction/"/>
+    <id>https://github.com/fatherai/2018/08/03/Fatherai-Service-Introduction/</id>
+    <published>2018-08-03T14:36:09.000Z</published>
+    <updated>2018-08-03T14:36:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Title         : Services Introduction of Father AI<br>Author        : Ning Zhao<br>Logo          : false</p><p>[TITLE]</p><h1 id="Gitlab"><a href="#Gitlab" class="headerlink" title="Gitlab"></a>Gitlab</h1><ul><li>Official website <a href="https://about.gitlab.com" target="_blank" rel="noopener">gitlab</a></li><li>Operating system : Ubuntu 16.04</li><li>Installed with docker<blockquote><p>docker pull gitlab/gitlab-ce</p></blockquote></li></ul><h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><ul><li>Official website <a href="https://jenkins.io" target="_blank" rel="noopener">jenkins</a>.</li><li>Operating system : Mac OS X</li></ul><h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><ul><li>Official website <a href="https://www.mysql.com" target="_blank" rel="noopener">mysql</a>.</li><li>Operating system : Ubuntu 16.04 / CentOS 7</li><li>Installed with docker<blockquote><p>docker pull mysql:5.6</p></blockquote></li><li>Category:</li></ul><ol><li>storage</li><li>backup</li></ol><h1 id="PhpMyAdmin"><a href="#PhpMyAdmin" class="headerlink" title="PhpMyAdmin"></a>PhpMyAdmin</h1><ul><li>Official website <a href="https://www.phpmyadmin.net" target="_blank" rel="noopener">phpmyadmin</a>.</li><li>Installed with docker<blockquote><p>docker pull phpmyadmin/phpmyadmin</p></blockquote></li></ul><h1 id="Superset"><a href="#Superset" class="headerlink" title="Superset"></a>Superset</h1><ul><li>Official website <a href="https://airbnb.io/projects/superset/" target="_blank" rel="noopener">superset</a>.</li></ul><p>Enjoy!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Title         : Services Introduction of Father AI&lt;br&gt;Author        : Ning Zhao&lt;br&gt;Logo          : false&lt;/p&gt;
+&lt;p&gt;[TITLE]&lt;/p&gt;
+&lt;h1 id=&quot;Gitla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Graph Transform Tool Experiment</title>
