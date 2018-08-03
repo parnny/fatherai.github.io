@@ -27,7 +27,7 @@ For easy editing and aesthetic presentation, we use the [markdown](https://en.wi
 
 ### Step 2. Upload for Publishing
 As you can expect, uploading is always not a difficult task as long as you have been connected to the network.  We combine publishing and uploading into a single function that makes you feel so easy to publish your own article.
-- Open the [publishing website](http://192.168.145.36:8080/job/Article-Publisher/build?).
+- Open the [publishing website](http://ci.fatherai.kingsoft.cn/job/Article-Publisher/build?).
 - Select **Publish** in command option bar.
 - Click the **Browse** button and select your zip file and click **Open**
 - Click **Build** button to start publishing.
@@ -35,7 +35,7 @@ As you can expect, uploading is always not a difficult task as long as you have 
 
 ## How to Remove the Articles Published Before
 A few steps to remove the article published before as follows:
-- Open the [publishing website](http://192.168.145.36:8080/job/Article-Publisher/build?).
+- Open the [publishing website](http://ci.fatherai.kingsoft.cn/job/Article-Publisher/build?).
 - Select **Remove** in command option bar.
 - Fill out the **name of article file to be deleted** in the **Article File Name** text box
 - Click **Build** button to delete.
@@ -66,10 +66,10 @@ An example of header configuration and display is shown as below:
 > date: 2018-01-22 14:03:17
 > categories: others
 > tags: others
-> cover: 	icon-handbook.jpeg
+> cover: icon-handbook.jpeg
 > author:
-> 	nick: Yi Gu
-> 	link: https://tornadoyi.github.io
+> &emsp;nick: Yi Gu
+> &emsp;link: https://tornadoyi.github.io
 > \---
 
 ![example](example.png)
@@ -81,4 +81,4 @@ An example of header configuration and display is shown as below:
 2. Compressing multiple files together helps to achieve batch publishing.
 3. Republishing an article whose name is the same as that of the previous article means that an **update** operation is executed.
 4. Use "|" to separate file name filled in article name text box could help to operate batch remove.
-5. Please visit the [publishing website](http://192.168.145.36:8080/job/Article-Publisher/build?) in the internal network of kingsoft.
+5. Please visit the [publishing website](http://ci.fatherai.kingsoft.cn/job/Article-Publisher/build?) in the internal network of kingsoft.
