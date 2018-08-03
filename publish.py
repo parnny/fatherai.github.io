@@ -17,7 +17,7 @@ def find_all_articles(hexo_path):
 
 
 
-def git_commit_and_push(git_path, log):
+def git_commit_and_push(git_path, push_branch, log):
     repo = Repo(git_path)
     index = repo.index
     remote = repo.remote()
@@ -32,7 +32,10 @@ def git_commit_and_push(git_path, log):
         print(e)
 
     # push
-    remote.push()
+    if push_branch is None:
+        remote.push()
+    else:
+        remote.push(push_branch)
 
 
 
@@ -45,7 +48,7 @@ def deploy(hexo_path):
     os.chdir(cur_path)
 
 
-def publish(hexo_path, article_zip_path, log):
+def publish(hexo_path, push_branch, article_zip_path, log):
     # check
     if not os.path.isfile(article_zip_path):
         raise Exception('Can not found zip file {}'.format(article_zip_path))
@@ -102,14 +105,14 @@ def publish(hexo_path, article_zip_path, log):
     shutil.rmtree(extract_path)
 
     # commit
-    git_commit_and_push(hexo_path, log)
+    git_commit_and_push(hexo_path, push_branch, log)
 
     # deploy
     deploy(hexo_path)
 
 
 
-def remove(hexo_path, article_name, log, separator):
+def remove(hexo_path, push_branch, article_name, log, separator):
     article_path = os.path.join(hexo_path, 'source', '_posts')
 
     # split article names
@@ -130,7 +133,7 @@ def remove(hexo_path, article_name, log, separator):
         if os.path.isfile(md_path): os.remove(md_path)
 
     # commit
-    git_commit_and_push(hexo_path, log)
+    git_commit_and_push(hexo_path, push_branch, log)
 
     # deploy
     deploy(hexo_path)
@@ -144,16 +147,17 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Run commands")
     parser.add_argument('command', choices=['publish', 'remove'], help='please choose action')
     parser.add_argument('--hexo', type=str, required=True, help='hexo project path')
+    parser.add_argument('--push-branch', type=str, default=None, help='branch for git push')
     parser.add_argument('--article', type=str, required=True, help='new article file path for publish or a name for remove')
     parser.add_argument('--log', type=str, default='automatic commit by publish', help='a log for commit')
     parser.add_argument('--separator', type=str, default='|', help='a separator for process array string')
     args = parser.parse_args()
 
     if args.command.lower() == 'publish':
-        publish(args.hexo, args.article, args.log)
+        publish(args.hexo, args.push_branch, args.article, args.log)
 
     elif args.command.lower() == 'remove':
-        remove(args.hexo, args.article, args.log, args.separator)
+        remove(args.hexo, args.push_branch, args.article, args.log, args.separator)
 
     else:
         raise Exception('invalid command {}'.format(args.command))
