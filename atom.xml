@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Father AI</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://github.com/fatherai/"/>
+  <updated>2018-08-03T14:23:07.000Z</updated>
+  <id>https://github.com/fatherai/</id>
+  
+  <author>
+    <name>Yi Gu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://github.com/fatherai/2018/08/03/Fatherai-Service-Introduction/"/>
+    <id>https://github.com/fatherai/2018/08/03/Fatherai-Service-Introduction/</id>
+    <published>2018-08-03T14:23:07.000Z</published>
+    <updated>2018-08-03T14:23:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Title         : Services Introduction of Father AI<br>Author        : Ning Zhao<br>Logo          : false</p><p>[TITLE]</p><h1 id="Gitlab"><a href="#Gitlab" class="headerlink" title="Gitlab"></a>Gitlab</h1><ul><li>Official website <a href="https://about.gitlab.com" target="_blank" rel="noopener">gitlab</a></li><li>Operating system : Ubuntu 16.04</li><li>Installed with docker<blockquote><p>docker pull gitlab/gitlab-ce</p></blockquote></li></ul><h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><ul><li>Official website <a href="https://jenkins.io" target="_blank" rel="noopener">jenkins</a>.</li><li>Operating system : Mac OS X</li></ul><h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><ul><li>Official website <a href="https://www.mysql.com" target="_blank" rel="noopener">mysql</a>.</li><li>Operating system : Ubuntu 16.04 / CentOS 7</li><li>Installed with docker<blockquote><p>docker pull mysql:5.6</p></blockquote></li><li>Category:</li></ul><ol><li>storage</li><li>backup</li></ol><h1 id="PhpMyAdmin"><a href="#PhpMyAdmin" class="headerlink" title="PhpMyAdmin"></a>PhpMyAdmin</h1><ul><li>Official website <a href="https://www.phpmyadmin.net" target="_blank" rel="noopener">phpmyadmin</a>.</li><li>Installed with docker<blockquote><p>docker pull phpmyadmin/phpmyadmin</p></blockquote></li></ul><h1 id="Superset"><a href="#Superset" class="headerlink" title="Superset"></a>Superset</h1><ul><li>Official website <a href="https://airbnb.io/projects/superset/" target="_blank" rel="noopener">superset</a>.</li></ul><p>Enjoy!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Title         : Services Introduction of Father AI&lt;br&gt;Author        : Ning Zhao&lt;br&gt;Logo          : false&lt;/p&gt;
+&lt;p&gt;[TITLE]&lt;/p&gt;
+&lt;h1 id=&quot;Gitla
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Graph Transform Tool Experiment</title>
+    <link href="https://github.com/fatherai/2018/02/01/Graph_Transform_Tool/"/>
+    <id>https://github.com/fatherai/2018/02/01/Graph_Transform_Tool/</id>
+    <published>2018-02-01T07:23:53.000Z</published>
+    <updated>2018-08-03T14:23:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Graph-Transform-Tool-Experiment"><a href="#Graph-Transform-Tool-Experiment" class="headerlink" title="Graph Transform Tool Experiment"></a>Graph Transform Tool Experiment</h2><p>Recently, we’ve done an experiment about how to using graph transform tool on frozen tensorflow-model. Looking back to the past time, lots of complicated errors have occurred during our test time.Fortunately, we managed to solve them at the end. So we wish our experience may help you.</p><p>If you have any question about how to using tensorflow on IOS, you can click here <a href="https://kingsoft-ai.github.io/2018/01/26/Using-tensorflow-On-IOS/" target="_blank" rel="noopener">Using-TensorFlow-On-IOS</a>. By the way, you could grasp everything about <strong>Graph Transform tool</strong> here <a href="https://github.com/tensorflow/tensorflow/tree/r1.3/tensorflow/tools/graph_transforms#quantize_nodes">Git</a></p><h4 id="Compared-tensorflow-r1-4-with-tensorflow-r1-5-version"><a href="#Compared-tensorflow-r1-4-with-tensorflow-r1-5-version" class="headerlink" title="Compared tensorflow-r1.4 with tensorflow-r1.5 version"></a>Compared tensorflow-r1.4 with tensorflow-r1.5 version</h4><p>At the very beginning, we consider whether or not the tensorflow version were affecting the speed of transformed models on ios. Aiming at verifying this improbability，we build this two versions on our Mac-mini.<br>Then, we took a series of experiments. <strong>Note that when you build your own deep-learning project on ios, you must ensure that your python-environment tensorflow version is the same as your built-on ios tensorflow version</strong>.</p><h4 id="Experiment-results"><a href="#Experiment-results" class="headerlink" title="Experiment results"></a>Experiment results</h4><p>After browsing all the transform references, we have selected some important parameters    for testing. Since we need to enhance the cpu processing speed on portable devices, the step of optimizing is indispensable. According to the official document, <strong>This recipe removes all of the nodes that aren’t called during inference, shrinks expressions that are always constant into single nodes, and optimizes away some multiply operations used during batch normalization by pre-multiplying the weights for convolutions</strong>. When added these parameters for optimizing, your mobile cpu can run as fast as possible. At last, the official document introduces some parameters for shrinking the model size. Concretely, after our test, the model size can compressed to almost 70% smaller than the original model.</p><p>Bachmarks are as follow:</p><table><thead><tr><th style="text-align:center">parameters</th><th style="text-align:center">test1</th><th style="text-align:center">test2</th><th style="text-align:center">test3</th></tr></thead><tbody><tr><td style="text-align:center">frozen</td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td></tr><tr><td style="text-align:center">add_default_attributes</td><td style="text-align:center"></td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td></tr><tr><td style="text-align:center">fold_batch_norms</td><td style="text-align:center"></td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td></tr><tr><td style="text-align:center">fold_constants</td><td style="text-align:center"></td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td></tr><tr><td style="text-align:center">fold_old_batch_norms</td><td style="text-align:center"></td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td></tr><tr><td style="text-align:center">quantize_weights</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">Yes</td></tr><tr><td style="text-align:center">strip_unused_nodes</td><td style="text-align:center"></td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td></tr><tr><td style="text-align:center">remove_nodes</td><td style="text-align:center"></td><td style="text-align:center">Yes</td><td style="text-align:center"></td></tr><tr><td style="text-align:center">tensorflow-r1.4(fps)</td><td style="text-align:center">9</td><td style="text-align:center">11</td><td style="text-align:center">11</td></tr><tr><td style="text-align:center">tensorflow-r1.5(fps)</td><td style="text-align:center">9</td><td style="text-align:center">10~11</td><td style="text-align:center">10~11</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Graph-Transform-Tool-Experiment&quot;&gt;&lt;a href=&quot;#Graph-Transform-Tool-Experiment&quot; class=&quot;headerlink&quot; title=&quot;Graph Transform Tool Experimen
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://github.com/fatherai/categories/machine-learning/"/>
+    
+      <category term="tensorflow" scheme="https://github.com/fatherai/categories/machine-learning/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="https://github.com/fatherai/tags/tensorflow/"/>
+    
+      <category term="machine learning" scheme="https://github.com/fatherai/tags/machine-learning/"/>
+    
+      <category term="ios" scheme="https://github.com/fatherai/tags/ios/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Using TensorFlow On IOS</title>
+    <link href="https://github.com/fatherai/2018/01/26/Using-tensorflow-On-IOS/"/>
+    <id>https://github.com/fatherai/2018/01/26/Using-tensorflow-On-IOS/</id>
+    <published>2018-01-26T07:43:36.000Z</published>
+    <updated>2018-08-03T14:23:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Using-TensorFlow-On-IOS"><a href="#Using-TensorFlow-On-IOS" class="headerlink" title="Using TensorFlow On IOS"></a>Using TensorFlow On IOS</h2><p>Welcome to KingSoft AILab! In this article, we’ll walk through getting TensorFlow, Google’s machine learning library, set up to perform inference directly on an iOS device.</p><h4 id="Installing-TensorFlow-on-IOS"><a href="#Installing-TensorFlow-on-IOS" class="headerlink" title="Installing TensorFlow on IOS"></a>Installing TensorFlow on IOS</h4><p>The binary distribution of TensorFlow for macOS does not include the IOS static library or some of the scripts we’ll need, so we’ll have to build both ourselves in a later section. Since it helps if the version of the iOS library is the same as the version of TensorFlow installed on our system, we’ll re-install the latest version of TensorFlow from source (even if it’s already installed). This can save us some headaches down the road.</p><p>DownLoad TensorFlow here: <a href="https://github.com/tensorflow/tensorflow">TensorFlow</a></p><p>If you have installed <a href="https://git-scm.com" target="_blank" rel="noopener">Git</a>,you can simply run:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/tensorflow/tensorflow.git</span><br></pre></td></tr></table></figure></p><h4 id="Building-Tensorflow-on-IOS"><a href="#Building-Tensorflow-on-IOS" class="headerlink" title="Building Tensorflow on IOS"></a>Building Tensorflow on IOS</h4><p>Note that tensorflow is built using a tool called bazel, and bazel requires some packages. if you have not installed, there is a easy way using Homebrew:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ brew install bazel</span><br><span class="line">$ brew install automake</span><br><span class="line">$ brew install libtool</span><br><span class="line">$ brew install autoconf</span><br></pre></td></tr></table></figure></p><p>From our directory of TensorFlow 1.3 sources, we can simply run:<br>  Make sure that your tensorflow version is 1.3 , we can simply run the following command in your terminal in tensorflow’s directory:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a</span><br></pre></td></tr></table></figure></p><p> Ckeckout your tensorflow version, simply run the command as follow, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout r1.3</span><br></pre></td></tr></table></figure></p><p>Before building tensorflow on IOS，you will need to download all dependencies as well. It provided a script that does so, to be run (as with all commands) <strong>at the root of your tensorflow</strong>:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tensorflow/contrib/makefile/download_dependencies.sh</span><br></pre></td></tr></table></figure><p>For more information you can click here <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/makefile">Readme</a></p><p>To get the libraries compiled, you must install xcode(version &gt;7.3), you can install xcode from App Store.</p><p>Now, if you are buiding tensorflow r1.3 or lower, you can skip the following step. Otherwise, if you are compiling tensorflow r1.4 or r1.5, you should modify the <strong>tf_op_files.txt</strong> file in your <strong>tensorflow/contrib/makefile</strong> directory by adding </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tensorflow/core/ops/bitwise_ops.cc</span><br><span class="line">tensorflow/core/ops/audio_ops.cc</span><br><span class="line">tensorflow/core/ops/lookup_ops.cc</span><br></pre></td></tr></table></figure><p>to the file.</p><p>Then, you can run this from the root of your TensorFlow source folder:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tensorflow/contrib/makefile/build_all_ios.sh</span><br></pre></td></tr></table></figure><p>Running build_all_ios.sh will generate a TensorFlow static library in the tensorflow/contrib/makefile/gen/lib subdirectory. This library is compiled for ARMv7, ARM64, and x86 architectures, so you can use it in both the iOS simulator and on iOS hardware.</p><h4 id="Setting-up-xcode-project"><a href="#Setting-up-xcode-project" class="headerlink" title="Setting up xcode project"></a>Setting up xcode project</h4><p>Create a new xcode test project. then, we have to tell the iOS target about the TensorFlow static library we built for IOS (and the protocol buffer library is relies on). To do this, copy the following static library to your xcode test project. We can run the command to copy:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cp YOUR_TENSORFLOW_SOURCE_DIR/tensorflow/tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a YOUR_XCODE_PROJECT_DIR/</span><br><span class="line">$ cp YOUR_TENSORFLOW_SOURCE_DIR/tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf-lite.a YOUR_XCODE_PROJECT_DIR/</span><br><span class="line">$ cp YOUR_TENSORFLOW_SOURCE_DIR/tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf.a YOUR_XCODE_PROJECT_DIR/</span><br></pre></td></tr></table></figure><p>After that, we should add the tensorflow static library to xcode project. Open your xcode project you have created, right-click the project name, select &gt;”Add Files to YOUR_PROJECT_NAME”, you will see <strong>libtensorflow-core.a</strong>, <strong>libprobuf-lite.a</strong>, <strong>libprotobuf.a</strong> in your pages, then add them. You can checkout whether or not you have add the static library sucessfully by selecting xcode menu: ‘Building Phases -&gt; Link Binary with Libraries’. Finally, add the <strong>Accelerate.framework</strong> library to ensure your tensorflow-program running fine.</p><p>Then add select xcode “Building Setting” menu, add <strong>$(PROJECT_DIR)/YOUR_PROJECT_NAME</strong> to Library Search Paths. Here replace <em>YOUR_PROJECT_NAME</em> to your project name. By the way, <strong>-force_load</strong> was used to decorate tensorflow.<br>Next, we’ll also add the following flags to Other Linker Flags:</p><p><strong>-force_load</strong><br><strong>$(PROJECT_DIR)/YOUR_PROJECT_NAME/libtensorflow-core.a</strong></p><p>Next, we add the following to Header Search Paths.</p><p><strong>YOUR_TENSORFLOW_SOURCE_FOLDER</strong><br><strong>YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/gen/proto</strong><br><strong>YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/downloads</strong><br><strong>YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/downloads/protobuf/src</strong><br><strong>YOUR_TENSORFLOW_SOURCE_FOLDER/tensorflow/contrib/makefile/downloads/eigen</strong></p><p>Now that the xcode project is set up, you can load up your model and perform inference on the test datesets.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Using-TensorFlow-On-IOS&quot;&gt;&lt;a href=&quot;#Using-TensorFlow-On-IOS&quot; class=&quot;headerlink&quot; title=&quot;Using TensorFlow On IOS&quot;&gt;&lt;/a&gt;Using TensorFlow 
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://github.com/fatherai/categories/machine-learning/"/>
+    
+      <category term="tensorflow" scheme="https://github.com/fatherai/categories/machine-learning/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="https://github.com/fatherai/tags/tensorflow/"/>
+    
+      <category term="machine learning" scheme="https://github.com/fatherai/tags/machine-learning/"/>
+    
+      <category term="ios" scheme="https://github.com/fatherai/tags/ios/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Handbook of Kingsoft Automatic Publisher</title>
+    <link href="https://github.com/fatherai/2018/01/22/Handbook-of-Kingsoft-Automatic-Publisher/"/>
+    <id>https://github.com/fatherai/2018/01/22/Handbook-of-Kingsoft-Automatic-Publisher/</id>
+    <published>2018-01-22T06:03:17.000Z</published>
+    <updated>2018-08-03T14:23:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="How-to-Publish-Your-Article"><a href="#How-to-Publish-Your-Article" class="headerlink" title="How to Publish Your Article"></a>How to Publish Your Article</h2><p>It was so essential and promising to publish your carefully written articles to a beautiful designed website. There are only <strong>two</strong> simple steps that can be uploaded to your articles before you respond.</p><h3 id="Step-1-Prepare-the-Articles-and-Assets"><a href="#Step-1-Prepare-the-Articles-and-Assets" class="headerlink" title="Step 1. Prepare the Articles and Assets"></a>Step 1. Prepare the Articles and Assets</h3><p>For easy editing and aesthetic presentation, we use the <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">markdown</a> syntax to edit the content of the article. </p><ul><li>Prepare the article file with <strong>.md</strong> suffix (example: article.md).</li><li>Create a resource folder If the article contains image or other assets (example: article).</li><li>Make sure that the article file is the same name as the resource folder and is in the same level directory.</li><li>Compress all files into a zip file.<blockquote><p>The contents in zip file may be as below:<br>article.zip<br>|——article.md<br>|——article</p></blockquote></li></ul><h3 id="Step-2-Upload-for-Publishing"><a href="#Step-2-Upload-for-Publishing" class="headerlink" title="Step 2. Upload for Publishing"></a>Step 2. Upload for Publishing</h3><p>As you can expect, uploading is always not a difficult task as long as you have been connected to the network.  We combine publishing and uploading into a single function that makes you feel so easy to publish your own article.</p><ul><li>Open the <a href="http://ci.fatherai.kingsoft.cn/job/Article-Publisher/build?" target="_blank" rel="noopener">publishing website</a>.</li><li>Select <strong>Publish</strong> in command option bar.</li><li>Click the <strong>Browse</strong> button and select your zip file and click <strong>Open</strong></li><li>Click <strong>Build</strong> button to start publishing.</li></ul><h2 id="How-to-Remove-the-Articles-Published-Before"><a href="#How-to-Remove-the-Articles-Published-Before" class="headerlink" title="How to Remove the Articles Published Before"></a>How to Remove the Articles Published Before</h2><p>A few steps to remove the article published before as follows:</p><ul><li>Open the <a href="http://ci.fatherai.kingsoft.cn/job/Article-Publisher/build?" target="_blank" rel="noopener">publishing website</a>.</li><li>Select <strong>Remove</strong> in command option bar.</li><li>Fill out the <strong>name of article file to be deleted</strong> in the <strong>Article File Name</strong> text box</li><li>Click <strong>Build</strong> button to delete.</li></ul><h2 id="Header-of-Article"><a href="#Header-of-Article" class="headerlink" title="Header of Article"></a>Header of Article</h2><p>As a standard norm and easy to read, we always expect author to define a very detailed header of the file. This is not only for the convenience of reading, but also for the better presentation.</p><p>You could use a pair of three line to describe the header of article, just like as below.</p><blockquote><p>-–<br>HEADER AREA<br>-–</p></blockquote><p>The header of the article will determine how the article will be displayed. Therefore fully filling the header of the article as much as possible will help to show it better.</p><ul><li>title: The title of article always show in everywhere.</li><li>subtitle: The subtitle is going to show below the title as abstract.</li><li>date: The contents of latest post side bar will be showed base on date.</li><li>categories: As classification of article, categories is used to fast search. See the trick of multilevel categories for child level classification.</li><li>tags: Only used to fast search.</li><li>cover: Cover is a banner of article.</li><li>author:  author contains 2 properties, one is nick which should be filled by author name, another is link which describe the email of author.</li></ul><p>An example of header configuration and display is shown as below:</p><blockquote><p>-–<br>title: Handbook of Kingsoft Automatic Publisher<br>subtitle: “Version: v0.1”<br>date: 2018-01-22 14:03:17<br>categories: others<br>tags: others<br>cover: icon-handbook.jpeg<br>author:<br>&emsp;nick: Yi Gu<br>&emsp;link: <a href="https://tornadoyi.github.io" target="_blank" rel="noopener">https://tornadoyi.github.io</a><br>-–</p></blockquote><p><img src="example.png" alt="example"></p><h2 id="Attension-and-Tricks"><a href="#Attension-and-Tricks" class="headerlink" title="Attension and Tricks"></a>Attension and Tricks</h2><ol><li>Define array constructor with <a href="http://yaml.org" target="_blank" rel="noopener">yaml</a> format for categories keyword could help to implement multilevel categories.</li><li>Compressing multiple files together helps to achieve batch publishing.</li><li>Republishing an article whose name is the same as that of the previous article means that an <strong>update</strong> operation is executed.</li><li>Use “|” to separate file name filled in article name text box could help to operate batch remove.</li><li>Please visit the <a href="http://ci.fatherai.kingsoft.cn/job/Article-Publisher/build?" target="_blank" rel="noopener">publishing website</a> in the internal network of kingsoft.</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;How-to-Publish-Your-Article&quot;&gt;&lt;a href=&quot;#How-to-Publish-Your-Article&quot; class=&quot;headerlink&quot; title=&quot;How to Publish Your Article&quot;&gt;&lt;/a&gt;How t
+      
+    
+    </summary>
+    
+      <category term="others" scheme="https://github.com/fatherai/categories/others/"/>
+    
+    
+      <category term="others" scheme="https://github.com/fatherai/tags/others/"/>
+    
+  </entry>
+  
+</feed>
