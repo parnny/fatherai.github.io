@@ -1,11 +1,11 @@
 
 # Site
-title: Kingsoft AI
-subtitle: Kingsoft AI Blog
+title: Father AI
+subtitle: Father AI Blog
 subtitle_desc: A blog for shared knowlege in AI
-keywords: kingsoft, AI, deeplearning, rl, dnn
+keywords: AI, deeplearning, RL, dnn
 description: Dedicated to sharing the latest achievements and experience in artificial intelligence
-introduction: 不思量，自难忘！
+introduction: Dedicated to sharing the latest achievements and experience in artificial intelligence
 favicon_ico: http://oo12ugek5.bkt.clouddn.com/blog/images/favicon.ico
 
 logo: /img/kingsoft_logo.png
@@ -34,7 +34,7 @@ menu:
   about: /about
   github:
     name: Github
-    link: https://github.com/kingsoft-ai
+    link: https://github.com/fatherai
     icon: icon-github
 
 highlight_theme: normal
